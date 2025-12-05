@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Authenticate with Signature</h2>
+    <p style="text-align: center; color: #636e72; margin-bottom: 10px;">
+        <i class="fas fa-user-circle"></i> 
+        Logging in as: <strong style="color: #667eea;">{{ username }}</strong>
+    </p>
+    <p style="text-align: center; color: #636e72; margin-bottom: 30px; font-size: 14px;">
+        Draw your registered signature below to authenticate
+    </p>
+
+    <div style="max-width: 650px; margin: 0 auto;">
+        <canvas id="sig" class="signature-pad" width="600" height="200"></canvas>
+        
+        <div style="display: flex; gap: 15px; margin-top: 15px;">
+            <button type="button" onclick="clearPad('sig')" style="flex: 1;" class="btn-secondary">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+            <button id="loginBtn" type="button" style="flex: 2;">
+                <i class="fas fa-sign-in-alt"></i> Verify & Login
+            </button>
+        </div>
+    </div>
+    
+    <p id="status"></p>
+</div>
+
+<script src="/static/js/signature_pad.js"></script>
+<script>
+    const username = "{{ username }}";
+    initSignaturePad('sig');
+
+    document.getElementById('loginBtn').addEventListener('click', async () => {
+        const c = document.getElementById('sig');
+        const dataUrl = c.toDataURL('image/png');
+        const statusEl = document.getElementById('status');
+        statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying signature...';
+        statusEl.style.color = '#667eea';
+        
+        try {
+            const res = await fetch('/login-signature', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    username: username,
+                    sig: dataUrl
+                })
+            });
+            const data = await res.json();
+            if (data.ok) {
+                statusEl.innerHTML = `<i class="fas fa-check-circle"></i> Login successful! (Similarity: ${(data.similarity * 100).toFixed(1)}%)`;
+                statusEl.style.color = '#27ae60';
+                setTimeout(() => {
+                    window.location.href = '/user-info?username=' + encodeURIComponent(username);
+                }, 1200);
+            } else {
+                statusEl.innerHTML = '<i class="fas fa-times-circle"></i> ' + (data.error || 'Login failed. Signature does not match.');
+                statusEl.style.color = '#e74c3c';
+            }
+        } catch (err) {
+            statusEl.innerHTML = '<i class="fas fa-times-circle"></i> Request failed.';
+            statusEl.style.color = '#e74c3c';
+        }
+    });
+</script>
+{% endblock %}

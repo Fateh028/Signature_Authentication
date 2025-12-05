@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+    <h2>Welcome Back</h2>
+    <p style="text-align: center; color: #636e72; margin-bottom: 30px;">
+        Sign in to access your account
+    </p>
+    
+    {% if error %}
+    <p class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ error }}
+    </p>
+    {% endif %}
+    
+    <form method="post" action="/login">
+        <label><i class="fas fa-user"></i> Username</label>
+        <input type="text" name="name" placeholder="Enter your username" required>
+        
+        <button type="submit">
+            <i class="fas fa-pen-fancy"></i> Continue to Signature
+        </button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 25px; color: #636e72;">
+        Don't have an account? 
+        <a href="/register" style="color: #667eea; font-weight: 600; text-decoration: none;">
+            Register here
+        </a>
+    </p>
+</div>
+{% endblock %}

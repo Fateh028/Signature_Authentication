@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="card">
+    <h2>Create Your Signature</h2>
+    <p style="text-align: center; color: #636e72; margin-bottom: 30px;">
+        <i class="fas fa-info-circle"></i> 
+        Draw your signature twice to ensure consistency. Both signatures will be compared for similarity.
+    </p>
+
+    <div class="signature-wrapper">
+        <div>
+            <h4><i class="fas fa-pen"></i> Signature #1</h4>
+            <canvas id="sig1" class="signature-pad" width="600" height="200"></canvas>
+            <button type="button" onclick="clearPad('sig1')" style="width: 100%; margin-top: 10px;">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+        </div>
+        <div>
+            <h4><i class="fas fa-pen"></i> Signature #2</h4>
+            <canvas id="sig2" class="signature-pad" width="600" height="200"></canvas>
+            <button type="button" onclick="clearPad('sig2')" style="width: 100%; margin-top: 10px;">
+                <i class="fas fa-eraser"></i> Clear
+            </button>
+        </div>
+    </div>
+
+    <button id="submitBtn" type="button" style="width: 100%; padding: 16px;">
+        <i class="fas fa-check-circle"></i> Complete Registration
+    </button>
+    <p id="status"></p>
+</div>
+
+<script src="/static/js/signature_pad.js"></script>
+<script>
+    const regId = "{{ reg_id }}";
+
+    initSignaturePad('sig1');
+    initSignaturePad('sig2');
+
+    document.getElementById('submitBtn').addEventListener('click', async () => {
+        const c1 = document.getElementById('sig1');
+        const c2 = document.getElementById('sig2');
+        const data1 = c1.toDataURL('image/png');
+        const data2 = c2.toDataURL('image/png');
+
+        const statusEl = document.getElementById('status');
+        statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Verifying signatures...';
+        
+        try {
+            const res = await fetch('/register-signature', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    reg_id: regId,
+                    sig1: data1,
+                    sig2: data2
+                })
+            });
+            const data = await res.json();
+            if (data.ok) {
+                statusEl.innerHTML = '<i class="fas fa-check-circle"></i> ' + data.message;
+                statusEl.style.color = '#27ae60';
+                setTimeout(() => { window.location.href = '/login'; }, 1500);
+            } else {
+                statusEl.innerHTML = '<i class="fas fa-times-circle"></i> ' + (data.error || 'Error during registration.');
+                statusEl.style.color = '#e74c3c';
+            }
+        } catch (err) {
+            statusEl.innerHTML = '<i class="fas fa-times-circle"></i> Request failed.';
+            statusEl.style.color = '#e74c3c';
+        }
+    });
+</script>
+{% endblock %}

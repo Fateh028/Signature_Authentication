@@ -1,0 +1,124 @@
+[
+    {
+        "student_id": "UA-24001",
+        "major": "Computer Science",
+        "course": "Advanced Algorithms",
+        "semester": "Fall 2025",
+        "advisor": "Dr. K. Ramirez",
+        "credits": 18,
+        "attendance_submitted": true,
+        "attendance_percentage": 97,
+        "campus": "North",
+        "notes": "Capstone proposal approved"
+    },
+    {
+        "student_id": "UA-24002",
+        "major": "Information Security",
+        "course": "Applied Cryptography",
+        "semester": "Fall 2025",
+        "advisor": "Prof. H. Sato",
+        "credits": 15,
+        "attendance_submitted": true,
+        "attendance_percentage": 93,
+        "campus": "North",
+        "notes": "Research assistant in SOC lab"
+    },
+    {
+        "student_id": "UA-24003",
+        "major": "Data Science",
+        "course": "Statistical Learning",
+        "semester": "Fall 2025",
+        "advisor": "Dr. M. Kapoor",
+        "credits": 16,
+        "attendance_submitted": true,
+        "attendance_percentage": 95,
+        "campus": "Innovation Center",
+        "notes": "Leading Kaggle study group"
+    },
+    {
+        "student_id": "UA-24004",
+        "major": "Electrical Engineering",
+        "course": "Embedded Systems",
+        "semester": "Fall 2025",
+        "advisor": "Prof. M. Okafor",
+        "credits": 17,
+        "attendance_submitted": true,
+        "attendance_percentage": 92,
+        "campus": "Tech Park",
+        "notes": "Robotics club president"
+    },
+    {
+        "student_id": "UA-24005",
+        "major": "Mechanical Engineering",
+        "course": "Dynamics II",
+        "semester": "Fall 2025",
+        "advisor": "Dr. E. Farrell",
+        "credits": 15,
+        "attendance_submitted": false,
+        "attendance_percentage": 88,
+        "campus": "South",
+        "notes": "Awaiting lab safety clearance"
+    },
+    {
+        "student_id": "UA-24006",
+        "major": "Civil Engineering",
+        "course": "Smart Cities Studio",
+        "semester": "Fall 2025",
+        "advisor": "Prof. R. Martins",
+        "credits": 14,
+        "attendance_submitted": true,
+        "attendance_percentage": 90,
+        "campus": "Downtown",
+        "notes": "Interning with city planning"
+    },
+    {
+        "student_id": "UA-24007",
+        "major": "Biomedical Engineering",
+        "course": "Medical Imaging Systems",
+        "semester": "Fall 2025",
+        "advisor": "Dr. L. Chen",
+        "credits": 18,
+        "attendance_submitted": true,
+        "attendance_percentage": 96,
+        "campus": "Health Sciences",
+        "notes": "Published in BioMed Today"
+    },
+    {
+        "student_id": "UA-24008",
+        "major": "Business Analytics",
+        "course": "Predictive Modeling",
+        "semester": "Fall 2025",
+        "advisor": "Prof. A. Navarro",
+        "credits": 12,
+        "attendance_submitted": false,
+        "attendance_percentage": 84,
+        "campus": "Main",
+        "notes": "Leading analytics bootcamp"
+    },
+    {
+        "student_id": "UA-24009",
+        "major": "Finance",
+        "course": "Quantitative Finance Lab",
+        "semester": "Fall 2025",
+        "advisor": "Dr. J. Lang",
+        "credits": 15,
+        "attendance_submitted": true,
+        "attendance_percentage": 91,
+        "campus": "Business Center",
+        "notes": "Competing in CFA challenge"
+    },
+    {
+        "student_id": "UA-24010",
+        "major": "UX Design",
+        "course": "Design Systems Workshop",
+        "semester": "Fall 2025",
+        "advisor": "Prof. C. Fournier",
+        "credits": 13,
+        "attendance_submitted": true,
+        "attendance_percentage": 94,
+        "campus": "Creative Hub",
+        "notes": "Showcase finalist"
+    }
+]
+
+

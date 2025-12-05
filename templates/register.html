@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="form-card">
+    <h2>Create Your Account</h2>
+    <p style="text-align: center; color: #636e72; margin-bottom: 30px;">
+        Join us and secure your account with signature authentication
+    </p>
+    
+    {% if error %}
+    <p class="error">
+        <i class="fas fa-exclamation-circle"></i>
+        {{ error }}
+    </p>
+    {% endif %}
+    
+    <form method="post" action="/register">
+        <label><i class="fas fa-user"></i> Full Name</label>
+        <input type="text" name="name" placeholder="Enter your name" required>
+        
+        <label><i class="fas fa-lock"></i> Password</label>
+        <input type="password" name="password" placeholder="Create a strong password" required>
+        
+        <button type="submit">
+            <i class="fas fa-arrow-right"></i> Continue to Signature
+        </button>
+    </form>
+    
+    <p style="text-align: center; margin-top: 25px; color: #636e72;">
+        Already have an account? 
+        <a href="/login" style="color: #667eea; font-weight: 600; text-decoration: none;">
+            Login here
+        </a>
+    </p>
+</div>
+{% endblock %}
