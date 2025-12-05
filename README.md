@@ -169,15 +169,7 @@ python clear_users.py
 - SQL injection protection via SQLAlchemy ORM
 - Consider using environment variables for sensitive configuration in production
 
-## License
 
-[Specify your license here]
 
-## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## Author
-
-[Your name/contact information]
 
